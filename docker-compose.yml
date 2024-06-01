@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  redis:
+    image: redis
+    container_name: my-redis
+    ports:
+      - "6379:6379"
+    restart: always
+  streamlit:
+    build: .
+    container_name: streamlit-app-local
+    ports:
+      - "8501:8501"
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - REGION
+      - REDIS_CONN_STRING
+    depends_on:
+      - redis
