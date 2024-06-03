@@ -3,3 +3,5 @@ langchain
 langchain_community
 redis
 boto3
+pypdf
+faiss-cpu
